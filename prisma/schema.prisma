@@ -28,12 +28,16 @@ model User {
 }
 
 model Programadores {
-  id         String @id @default(uuid())
+  id         String      @id @default(uuid())
   name       String
   foto       String
   tecnologia Tecnologias
 
-   @@index([tecnologia])
+  @@index([tecnologia])
 }
 
-
+model FotosConferencia {
+  id   String @id @default(uuid())
+  name String
+  foto String
+}

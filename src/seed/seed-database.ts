@@ -11,10 +11,12 @@ async function main() {
     await prisma.user.deleteMany();
  
     await prisma.programadores.deleteMany();
+
+    await prisma.fotosConferencia.deleteMany()
    
     // ]);
     
-    const { programadores, users } = initialData;
+    const { programadores, users, fotosConferencia } = initialData;
   
   
     await prisma.user.createMany({
@@ -23,6 +25,10 @@ async function main() {
 
     await prisma.programadores.createMany({
         data: programadores
+      });
+
+      await prisma.fotosConferencia.createMany({
+        data: fotosConferencia
       });
   
  

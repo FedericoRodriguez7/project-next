@@ -16,29 +16,6 @@ interface Props {
   }
 }
 
-const callouts = [
-  {
-    name: 'Desk and Office',
-    description: 'Work from home accessories',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg',
-    imageAlt: 'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
-    href: '#',
-  },
-  {
-    name: 'Self-Improvement',
-    description: 'Journals and note-taking',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg',
-    imageAlt: 'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-    href: '#',
-  },
-  {
-    name: 'Travel',
-    description: 'Daily commute essentials',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#',
-  },
-]
 
 
    
@@ -54,23 +31,7 @@ const callouts = [
     
     return (
       <>
-    {/*   <div>
-        <h1>Programadores invitados</h1>
-      </div>
-      
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 mb-10 ">
-        <div className="rounded-md overflow-hidden fade-in">
-          {programs.map(program => (
-            <div  key={program.id}>
-
-              <img src={program.images} alt={`${program.name}'s images`}  width={500} height={500} className="w-full object-cover rounded" />
-              <h2>{program.name}</h2>
-              <p>Technology: {program.tecnologia}</p>
-            </div>
-          ))}
-        </div>
-</div> */}
-
+  
 <div className="bg-gray-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
