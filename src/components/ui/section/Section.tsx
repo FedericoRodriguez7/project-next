@@ -1,15 +1,15 @@
 
 const links = [
-    { name: 'Open roles', href: '#' },
-    { name: 'Internship program', href: '#' },
-    { name: 'Our values', href: '#' },
-    { name: 'Meet our leadership', href: '#' },
+    { name: 'Nuestros invitados', href: '/invitados' },
+    { name: 'Calendario', href: '/calendario' },
+    { name: 'Conferencia', href: '/conferencia' },
+
   ]
   const stats = [
-    { name: 'Offices worldwide', value: '12' },
-    { name: 'Full-time colleagues', value: '300+' },
-    { name: 'Hours per week', value: '40' },
-    { name: 'Paid time off', value: 'Unlimited' },
+    { name: 'Invitados expertos', value: '6' },
+    { name: 'Proyectos para compartir', value: '300+' },
+    { name: 'Salas con profesionales', value: '10' },
+    { name: 'Capacidad', value: 'ilimitada' },
   ]
   
   export default function Section() {
@@ -46,10 +46,9 @@ const links = [
         </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Work with us</h2>
+            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Conferencia Mundial!</h2>
             <p className="mt-6 text-lg leading-8 text-gray-300">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-              fugiat veniam occaecat fugiat aliqua.
+            "Explorando las fronteras del desarrollo: Innovación, Colaboración y Pasión en la Programación Global".
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">

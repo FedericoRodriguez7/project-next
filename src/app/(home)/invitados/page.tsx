@@ -1,7 +1,17 @@
+import { ProfileCard } from '@/components/invitados/Invitados'
+
 import React from 'react'
+
 
 export default function InvitadosPage() {
   return (
-    <div>InvitadosPage</div>
+    
+    <div className='' >
+      <ProfileCard />
+    </div>
+    
+
+
+    
   )
 }
