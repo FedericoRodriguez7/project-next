@@ -10,7 +10,7 @@ import prisma from './lib/prisma';
 export const authConfig: NextAuthConfig = {
   pages: {
     signIn: '/auth/login',
-    newUser: '/auth/new-account',
+    newUser: '/auth/newaccount',
   },
 
   callbacks: {
