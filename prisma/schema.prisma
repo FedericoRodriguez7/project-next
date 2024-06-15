@@ -1,10 +1,12 @@
+// schema.prisma
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = env("DATABASE_URL")
 }
 
 enum Role {
@@ -18,13 +20,14 @@ enum Tecnologias {
 }
 
 model User {
-  id            String    @id @default(uuid())
+  id            String       @id @default(uuid())
   name          String
-  email         String    @unique
+  email         String       @unique
   emailVerified DateTime?
   password      String
-  role          Role      @default(user)
+  role          Role         @default(user)
   image         String?
+  conferencias  Conferencia[] // Relación con conferencias
 }
 
 model Programadores {
@@ -40,4 +43,19 @@ model FotosConferencia {
   id   String @id @default(uuid())
   name String
   foto String
+}
+
+model Conferencia {
+  id         Int       @id @default(autoincrement())
+  titulo     String
+  texto      String
+  fecha      DateTime
+  entradas   Int       @default(10000)
+  reservado  Boolean   @default(false) // Nuevo campo para indicar si la conferencia está reservada
+  userId     String?   // Campo para la relación inversa con User
+
+  // Relación inversa a User
+  user       User?     @relation(fields: [userId], references: [id])
+
+  @@index([fecha])
 }

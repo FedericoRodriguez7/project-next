@@ -18,11 +18,22 @@ interface SeedFotosConferencia {
   foto: string;
 }
 
+interface SeedConferencia {
+  titulo: string;
+  texto: string;
+  fecha: Date;
+  entradas: number;
+  reservado?: boolean;
+}
+
 interface SeedData {
   users: SeedUser[];
   programadores: SeedProgramadores[];
   fotosConferencia: SeedFotosConferencia[];
+  conferencia: SeedConferencia[];
 }
+
+
 
 export const initialData: SeedData = {
   users: [
@@ -123,4 +134,25 @@ export const initialData: SeedData = {
       foto: "https://static7.depositphotos.com/1000998/745/i/450/depositphotos_7451136-stock-photo-on-conference.jpg",
     },
   ],
+  conferencia: [
+    {
+      titulo: 'Sala Frontend y Backend',
+      texto: 'En la sala de conferencia de Frontend y Backend, se explorarán las últimas tecnologías y mejores prácticas en el desarrollo web, incluyendo la integración entre interfaces de usuario interactivas y servidores eficientes. Además, se ofrecerán demostraciones en vivo y sesiones de preguntas y respuestas con expertos del sector.',
+      fecha: new Date('2024-05-12'), // Aquí se utiliza new Date() para especificar la fecha
+      entradas: 10000,
+    },
+    {
+      titulo: 'Sala Backend',
+      texto: 'En la sala de conferencia de Backend, se discutirán las mejores prácticas y tecnologías actuales para el desarrollo de servidores robustos y escalables, así como la gestión de bases de datos y APIs. Habrá presentaciones sobre arquitectura de software y optimización del rendimiento del servidor.',
+      fecha: new Date('2024-05-13'), // Aquí se utiliza new Date() para especificar la fecha
+      entradas: 10000,
+    },
+    {
+      titulo: 'Sala Frontend',
+      texto: 'En la sala de conferencia de Frontend, se abordarán las tendencias más recientes en diseño y desarrollo de interfaces de usuario, incluyendo el uso de frameworks modernos y técnicas avanzadas de CSS. También se realizarán demostraciones prácticas y se discutirán estrategias para mejorar la experiencia del usuario.',
+      fecha: new Date('2024-05-14'), // Aquí se utiliza new Date() para especificar la fecha
+      entradas: 10000,
+    },
+  ]
+
 };
