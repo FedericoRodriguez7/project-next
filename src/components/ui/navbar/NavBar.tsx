@@ -34,7 +34,7 @@ export default function NavBar() {
   const { data: session} = useSession();
   const isAuthenticated = !!session?.user;
   const [isSessionLoading, setIsSessionLoading] = useState(true)
-
+  
    useEffect(() => {
     setIsSessionLoading(false)
   }, [session])

@@ -1,10 +1,11 @@
-'use client'
+'use client';
 
 import { useState, useEffect } from 'react';
 import { getCalendario } from '@/actions/getCalendario';
 import { Conferencia } from '@prisma/client';
 import { CheckIcon } from '@heroicons/react/20/solid';
 import Swal from 'sweetalert2';
+import { getSession } from 'next-auth/react';
 
 const includedFeatures = [
   'Acceso a todos los repositorios',
@@ -15,6 +16,8 @@ const includedFeatures = [
 
 const CalendarioComponent = () => {
   const [conferencias, setConferencias] = useState<Conferencia[]>([]);
+  const [reservadas, setReservadas] = useState<number[]>([]);
+  const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchConferencias() {
@@ -26,10 +29,38 @@ const CalendarioComponent = () => {
       }
     }
 
+    // Obtener la sesión del usuario
+    async function fetchSession() {
+      const session = await getSession();
+      if (session && session.user) {
+        setUserId(session.user.id);
+        // Fetch reservas del usuario desde la base de datos
+        const response = await fetch('/api/obtenerReservas', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userId: session.user.id }),
+        });
+        const data = await response.json();
+        if (data.ok) {
+          setReservadas(data.reservas.map((reserva: { conferenciaId: any; }) => reserva.conferenciaId));
+        } else {
+          console.error('Error al obtener las reservas:', data.message);
+        }
+      }
+    }
+
     fetchConferencias();
+    fetchSession();
   }, []);
 
   const handleReservaClick = async (id: number) => {
+    if (!userId) {
+      Swal.fire('Error', 'Debes iniciar sesión para reservar una conferencia', 'error');
+      return;
+    }
+
     const conferenciaSeleccionada = conferencias.find(conferencia => conferencia.id === id);
     if (!conferenciaSeleccionada) return;
 
@@ -49,20 +80,24 @@ const CalendarioComponent = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ conferenciaId: id }),
+          body: JSON.stringify({ userId, conferenciaId: id }),
         });
-        
+
         const data = await response.json();
 
         if (data.ok) {
           Swal.fire('Reservado!', 'Tu conferencia ha sido reservada exitosamente.', 'success');
+
           const conferenciasActualizadas = conferencias.map(conferencia => {
             if (conferencia.id === id) {
-              return { ...conferencia, reservado: true }; // Marcar como reservado localmente
+              return { ...conferencia, entradas: conferencia.entradas - 1 };
             }
             return conferencia;
           });
           setConferencias(conferenciasActualizadas);
+
+          // Actualizar las conferencias reservadas en el estado
+          setReservadas([...reservadas, id]);
         } else {
           Swal.fire('Error', data.message, 'error');
         }
@@ -105,11 +140,11 @@ const CalendarioComponent = () => {
                     <span className="text-5xl font-bold tracking-tight text-gray-900">{new Date(conferencia.fecha).toLocaleDateString()}</span>
                   </p>
                   <button
-                    className={`mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${conferencia.reservado ? 'cursor-default bg-gray-400' : ''}`}
+                    className={`mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${conferencia.entradas <= 0 || reservadas.includes(conferencia.id) ? 'cursor-default bg-gray-400' : ''}`}
                     onClick={() => handleReservaClick(conferencia.id)}
-                    disabled={conferencia.reservado}
+                    disabled={conferencia.entradas <= 0 || reservadas.includes(conferencia.id)}
                   >
-                    {conferencia.reservado ? 'Ya reservaste!' : 'RESERVAR'}
+                    {conferencia.entradas <= 0 ? 'Agotado' : reservadas.includes(conferencia.id) ? 'Ya reservaste!' : 'RESERVAR'}
                   </button>
                   <p className="mt-6 text-xs leading-5 text-gray-600">
                     *Para cancelar, contacta al soporte.
