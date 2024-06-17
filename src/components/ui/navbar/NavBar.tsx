@@ -29,25 +29,22 @@ function classNames(...classes: string[]) {
 export default function NavBar() {
   const pathname = usePathname()
 
- 
-
-  const { data: session} = useSession();
-  const isAuthenticated = !!session?.user;
+  const { data: session } = useSession()
+  const isAuthenticated = !!session?.user
   const [isSessionLoading, setIsSessionLoading] = useState(true)
-  
-   useEffect(() => {
+
+  useEffect(() => {
     setIsSessionLoading(false)
   }, [session])
 
   const handleSignOut = async () => {
-    await signOut();
+    await signOut()
     // Perform any additional sign out logic here, e.g., redirect to sign out page
-  };
+  }
 
   if (isSessionLoading) {
     return <div>Loading...</div>
   }
-
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -69,8 +66,8 @@ export default function NavBar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    className="h-10 w-auto"
+                    src="https://images.emojiterra.com/google/noto-emoji/unicode-15.1/color/1024px/1f988.png"
                     alt="Your Company"
                   />
                 </div>
@@ -91,6 +88,11 @@ export default function NavBar() {
                     ))}
                   </div>
                 </div>
+                {isAuthenticated && (
+                  <h2 className="ml-5 mt-2 text-sm  font-medium text-white">
+                    Hola, {session.user.name}!
+                  </h2>
+                )}
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
@@ -127,7 +129,7 @@ export default function NavBar() {
                         <>
                           <MenuItem>
                             <a
-                              href="#"
+                              href="/not-found"
                               className="block px-4 py-2 text-sm text-gray-700"
                             >
                               Configuraciones
@@ -135,7 +137,7 @@ export default function NavBar() {
                           </MenuItem>
                           <MenuItem>
                             <a
-                              href="#"
+                              href="/not-found"
                               className="block px-4 py-2 text-sm text-gray-700"
                             >
                               Tu perfil

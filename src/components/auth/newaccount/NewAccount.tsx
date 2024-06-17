@@ -43,7 +43,7 @@ export const RegisterForm = () => {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           className="mx-auto h-10 w-auto"
-          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+          src="https://images.emojiterra.com/google/noto-emoji/unicode-15.1/color/1024px/1f988.png"
           alt="Your Company"
         />
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
