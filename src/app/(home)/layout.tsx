@@ -1,7 +1,7 @@
 import NavBar from "@/components/ui/navbar/NavBar";
 import Section from "@/components/ui/section/Section";
 import { Footer } from "@/components/ui/footer/Footer";
-import { TopMenu } from "@/components/ui/top-menu/TopMenu";
+
 
 export default function ShopLayout( { children }: {
   children: React.ReactNode;

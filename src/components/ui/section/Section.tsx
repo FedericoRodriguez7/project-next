@@ -48,7 +48,7 @@ const links = [
           <div className="mx-auto max-w-2xl lg:mx-0">
             <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Conferencia Mundial!</h2>
             <p className="mt-6 text-lg leading-8 text-gray-300">
-            "Explorando las fronteras del desarrollo: Innovación, Colaboración y Pasión en la Programación Global".
+            &quot;Explorando las fronteras del desarrollo: Innovación, Colaboración y Pasión en la Programación Global&quot;.
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
