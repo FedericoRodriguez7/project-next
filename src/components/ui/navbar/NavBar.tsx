@@ -43,7 +43,7 @@ export default function NavBar() {
   }
 
   if (isSessionLoading) {
-    return <div>Loading...</div>
+    return <div>Loading... Si tarda mas de 5 segundos, haga <a className='text-gray-400' href="/">Click aqui</a></div>
   }
 
   return (
