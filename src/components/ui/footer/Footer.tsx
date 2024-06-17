@@ -58,7 +58,7 @@ export function Footer() {
               </Typography>
               <ul className="space-y-1">
                 {links.map((link, key) => (
-                  <Typography key={key} as="li" color="blue-gray" className="font-normal"  placeholder={undefined}>
+                  <Typography key={key} onPointerEnter={undefined} onPointerLeave={undefined} as="li" color="blue-gray" className="font-normal"  placeholder={undefined}>
                     <a
                       href={link.href}
                       target="_blank"
@@ -75,12 +75,13 @@ export function Footer() {
         <div className="flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
           <Typography
             variant="small"
+            onPointerEnter={undefined} onPointerLeave={undefined}
             className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"  placeholder={undefined}          >
             &copy; {currentYear} <a target="_blank" href="https://portfoliodefinitive.vercel.app/">Material FR</a>. All
             Rights Reserved.
           </Typography>
           <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
-            <Typography as="a" href="https://www.instagram.com/fede_rodriguez.ok/" target="_blank" className="opacity-80 transition-opacity hover:opacity-100"  placeholder={undefined}>
+            <Typography as="a" href="https://www.instagram.com/fede_rodriguez.ok/" onPointerEnter={undefined} onPointerLeave={undefined} target="_blank" className="opacity-80 transition-opacity hover:opacity-100"  placeholder={undefined}>
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   fillRule="evenodd"
@@ -89,13 +90,13 @@ export function Footer() {
                 />
               </svg>
             </Typography>
-            <Typography as="a" target="_blank" href="https://www.linkedin.com/in/federico-emanuel-rodriguez-carpio-9a05611ab/" className="opacity-80 transition-opacity hover:opacity-100"  placeholder={undefined}>
+            <Typography as="a" target="_blank" onPointerEnter={undefined} onPointerLeave={undefined} href="https://www.linkedin.com/in/federico-emanuel-rodriguez-carpio-9a05611ab/" className="opacity-80 transition-opacity hover:opacity-100"  placeholder={undefined}>
               <svg className="w-6 h-6 text-gray-800 dark:text-dark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                 <path fillRule="evenodd" d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" clipRule="evenodd"/>
                 <path d="M7.2 8.809H4V19.5h3.2V8.809Z"/>
               </svg>
             </Typography>
-            <Typography as="a" target="_blank" href="https://github.com/FedericoRodriguez7" className="opacity-80 transition-opacity hover:opacity-100"  placeholder={undefined}>
+            <Typography as="a" target="_blank" href="https://github.com/FedericoRodriguez7" onPointerEnter={undefined} onPointerLeave={undefined} className="opacity-80 transition-opacity hover:opacity-100"  placeholder={undefined}>
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   fillRule="evenodd"
