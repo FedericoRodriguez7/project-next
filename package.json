@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postinstall": "prisma generate && npx prisma migrate dev",
     "start": "next start",
     "lint": "next lint",
     "seed": "ts-node src/seed/seed-database.ts"
